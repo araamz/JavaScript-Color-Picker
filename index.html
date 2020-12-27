@@ -1,11 +1,13 @@
 <html>
 
     <head>
+
         <title>
 
             Color Sampler
 
         </title>
+
         <style>
 
             body, p {
@@ -28,14 +30,25 @@
 
             }
 
+            #file_uploader {
+
+                margin: 30px auto 0 auto;
+                width: 290px;
+                background: gray;
+                border-radius: 5px;
+                padding: 10px;
+                color: white;
+
+            }
+
             #container {
 
                 width: 300px;
-                margin: 40px auto 0 auto;
+                margin: 30px auto 0 auto;
                 
                 display: grid;     
                 grid-gap: 5px;           
-                grid-template-columns: 3fr 1fr;
+                grid-template-columns: 3fr 1.5fr;
                 grid-template-rows: 1fr auto auto;
 
             }
@@ -88,7 +101,7 @@
                 background: white;
                 list-style-type: none;
                 margin: 0;
-                padding: 0;
+                padding: 5px;
 
                 grid-column-start: 2;
                 grid-column-end: 3;
@@ -98,20 +111,23 @@
             }
 
         </style>
+
         <script src="https://unpkg.com/vue@next"></script>
+
     </head>
     <body>
 
+        <div id="file_uploader">
+
+            <input type="file" id="file_selection">
+
+        </div>
+
         <div id="container">
 
-            <div id="color_viewer">
-
-                
-
-            </div>
+            <div id="color_viewer"></div>
 
             <div id="color_palette">
-
 
                     <p class="redPalette">
                         Red:
@@ -161,7 +177,7 @@
                     </div>
 
                 </li>
-
+                
             </ul>
         </div>
 
@@ -169,7 +185,41 @@
 
 </html>
 <script>
+    
+    document.getElementById("file_selection").addEventListener('change', (event) => {
 
+        var color_file = event.target.files[0];
+
+        var reader = new FileReader();
+
+        reader.readAsText(color_file, "UTF-8");
+
+        reader.addEventListener('load', (event) => {
+
+            var output_data = reader.result.trim();
+
+            for(var i = 0; i < 21; i++) {
+
+                var print_data = output_data.split("\n")[i]
+
+                if (print_data.length > 1) {
+
+                    var color_name = output_data.split("\n")[i].split(" ")[0];
+                    var red_value = output_data.split("\n")[i].split(" ")[1];
+                    var green_value = output_data.split("\n")[i].split(" ")[2];
+                    var blue_value = output_data.split("\n")[i].split(" ")[3];
+
+                    console.log(color_name + " R: " + red_value + " G: " + green_value + " B: " + blue_value);
+                    
+
+                }
+            }
+
+        });
+
+    });
+
+/*
     class color_item {
 
         constructor(red_value, green_value, blue_value, color_name) {
@@ -190,5 +240,5 @@
 
 
     }
-
+*/
 </script>
