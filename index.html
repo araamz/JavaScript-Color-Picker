@@ -1,0 +1,194 @@
+<html>
+
+    <head>
+        <title>
+
+            Color Sampler
+
+        </title>
+        <style>
+
+            body, p {
+
+                margin: 0;
+                padding: 0;
+
+            }
+
+            body {
+
+                background-color: #EEE;
+
+            }
+
+            p {
+
+                font-family: sans-serif;
+                font-size: 13px;
+
+            }
+
+            #container {
+
+                width: 300px;
+                margin: 40px auto 0 auto;
+                
+                display: grid;     
+                grid-gap: 5px;           
+                grid-template-columns: 3fr 1fr;
+                grid-template-rows: 1fr auto auto;
+
+            }
+
+            #color_viewer {
+
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 1;
+                grid-row-end: 2;
+                background-color: red;
+                height: 110px;
+
+            }
+
+            #color_palette {
+
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 2;
+                grid-row-end: 3;
+
+            }
+            
+            .redPalette, .greenPalette, .bluePalette {
+
+                align-self: center;
+
+            }
+
+
+            #color_options {
+
+                display: flex;
+                justify-content: center;
+
+                grid-column-start: 1;
+                grid-column-end: 2;
+                grid-row-start: 3;
+                grid-row-end: 4;
+
+            }
+
+            #color_selection {
+
+                background: white;
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+
+                grid-column-start: 2;
+                grid-column-end: 3;
+                grid-row-start: 1;
+                grid-row-end: 4;
+
+            }
+
+        </style>
+        <script src="https://unpkg.com/vue@next"></script>
+    </head>
+    <body>
+
+        <div id="container">
+
+            <div id="color_viewer">
+
+                
+
+            </div>
+
+            <div id="color_palette">
+
+
+                    <p class="redPalette">
+                        Red:
+                    </p>
+                    <input class="redPalette" size="3" type="text">
+                    <button class="redPalette" type="button">-</button>
+                    <button class="redPalette" type="button">+</button>
+
+
+                    <p class="greenPalette">
+                        Green:
+                    </p>
+                    <input class="greenPalette" size="3" type="text">
+                    <button class="greenPalette" type="button">-</button>
+                    <button class="greenPalette" type="button">+</button>
+
+
+                    <p class="bluePalette">
+                        Blue:
+                    </p>
+                    <input class="bluePalette" size="3" type="text">
+                    <button class="bluePalette" type="button">-</button>
+                    <button class="bluePalette" type="button">+</button>
+
+
+            </div>
+
+            <div id="color_options">
+
+                <button type="button">Save</button>
+                <button type="button">Reset</button>
+
+            </div>
+
+            <ul id="color_selection">
+
+                <li>
+
+                    <div>
+
+                        <p>
+
+                            Red
+
+                        </p>
+
+                    </div>
+
+                </li>
+
+            </ul>
+        </div>
+
+    </body>
+
+</html>
+<script>
+
+    class color_item {
+
+        constructor(red_value, green_value, blue_value, color_name) {
+
+            this.red_value = red_value;
+            this.green_value = green_value;
+            this.red_value = red_value;
+            this.color_name = color_item;
+
+        }
+
+    }
+
+    var application_model = {
+
+        selected_color = new color_item(0,0,0,"DEFAULT"),
+        preview_color = new color_item(0,0,0,"DEFAULT")
+
+
+    }
+
+</script>
